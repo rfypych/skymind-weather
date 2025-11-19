@@ -1,0 +1,7 @@
+{
+  "name": "SkyMind Weather AI",
+  "description": "Next-generation weather dashboard powered by Open-Meteo and Gemini AI. Features real-time forecasts, interactive charts, and personalized AI weather assistants.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
