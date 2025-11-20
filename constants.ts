@@ -102,7 +102,17 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     favorites: "Favorite Locations",
     addToFavorites: "Add to Favorites",
     removeFromFavorites: "Remove from Favorites",
-    noFavorites: "No favorite locations yet"
+    noFavorites: "No favorite locations yet",
+    // About Modal
+    aboutApp: "About SkyMind",
+    architecture: "Architecture",
+    features: "Key Features",
+    reasonTitle: "Background",
+    reasonText: "This application was created as a final assignment for the TKJ (Computer and Network Engineering) subject, tasked with developing a comprehensive software application.",
+    thanksTo: "Special Thanks",
+    close: "Close",
+    techStack: "Tech Stack",
+    teacher: "TKJ Teacher"
   },
   id: {
     searchPlaceholder: "Cari kota...",
@@ -135,6 +145,16 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     favorites: "Lokasi Favorit",
     addToFavorites: "Tambah ke Favorit",
     removeFromFavorites: "Hapus dari Favorit",
-    noFavorites: "Belum ada lokasi favorit"
+    noFavorites: "Belum ada lokasi favorit",
+    // About Modal
+    aboutApp: "Tentang SkyMind",
+    architecture: "Arsitektur",
+    features: "Fitur Utama",
+    reasonTitle: "Latar Belakang",
+    reasonText: "Aplikasi ini dibuat sebagai tugas mata pelajaran TKJ (Teknik Komputer dan Jaringan) yang menugaskan siswa untuk membuat sebuah aplikasi perangkat lunak yang fungsional.",
+    thanksTo: "Terima Kasih Kepada",
+    close: "Tutup",
+    techStack: "Teknologi",
+    teacher: "Guru Mapel TKJ"
   }
 };
