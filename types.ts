@@ -73,3 +73,8 @@ export interface FavoriteLocation {
   country?: string;
   admin1?: string;
 }
+
+export interface ChatMessage {
+  role: 'user' | 'assistant' | 'system';
+  content: string;
+}

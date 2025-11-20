@@ -71,7 +71,7 @@ export const AICard: React.FC<Props> = ({ weatherData, persona, language, onPers
         ) : analysis ? (
           <>
             <div className="bg-white/5 p-4 rounded-xl border border-white/5 relative group">
-              <p className="text-sm leading-relaxed text-gray-200 italic">"{analysis.summary}"</p>
+              <p className="text-sm sm:text-base leading-relaxed text-white font-medium">"{analysis.summary}"</p>
               <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
                  <span className="text-[10px] text-gray-500 bg-black/50 px-2 py-1 rounded-full border border-white/10">
                    {config.provider} / {config.modelId}
@@ -84,7 +84,7 @@ export const AICard: React.FC<Props> = ({ weatherData, persona, language, onPers
                  <Shirt className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
                  <div>
                    <span className="text-xs font-bold text-blue-300 uppercase tracking-wide">{t.outfit}</span>
-                   <p className="text-xs text-gray-300 mt-1">{analysis.outfitRecommendation}</p>
+                   <p className="text-sm text-gray-200 mt-1 leading-snug">{analysis.outfitRecommendation}</p>
                  </div>
                </div>
 
@@ -92,7 +92,7 @@ export const AICard: React.FC<Props> = ({ weatherData, persona, language, onPers
                  <Activity className="h-5 w-5 text-emerald-400 mt-0.5 flex-shrink-0" />
                  <div>
                    <span className="text-xs font-bold text-emerald-300 uppercase tracking-wide">{t.activity}</span>
-                   <p className="text-xs text-gray-300 mt-1">{analysis.activitySuggestion}</p>
+                   <p className="text-sm text-gray-200 mt-1 leading-snug">{analysis.activitySuggestion}</p>
                  </div>
                </div>
             </div>
@@ -102,7 +102,7 @@ export const AICard: React.FC<Props> = ({ weatherData, persona, language, onPers
                  <AlertTriangle className="h-5 w-5 text-amber-400 mt-0.5 flex-shrink-0" />
                  <div>
                    <span className="text-xs font-bold text-amber-300 uppercase tracking-wide">{t.warning}</span>
-                   <p className="text-xs text-gray-300 mt-1">{analysis.hazards}</p>
+                   <p className="text-sm text-gray-200 mt-1 leading-snug">{analysis.hazards}</p>
                  </div>
                </div>
             )}

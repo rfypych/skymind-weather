@@ -65,3 +65,39 @@ export const fetchWeatherData = async (lat: number, lon: number, name: string): 
     daily: data.daily,
   };
 };
+
+// Tool for AI to fetch real-time data
+export const getWeatherSummary = async (city: string): Promise<any> => {
+  try {
+    // Default to English for AI search to ensure better matching
+    const locations = await searchLocation(city, 'en');
+    if (!locations || locations.length === 0) {
+      return { error: `Location '${city}' not found. Please check spelling.` };
+    }
+    
+    // Use the first result
+    const location = locations[0];
+    const data = await fetchWeatherData(location.latitude, location.longitude, location.name);
+    
+    return {
+      location: data.locationName,
+      country: location.country,
+      coordinates: { lat: data.latitude, lon: data.longitude },
+      current: {
+        temperature: `${data.current.temperature}°C`,
+        humidity: `${data.current.humidity}%`,
+        windSpeed: `${data.current.windSpeed} km/h`,
+        conditionCode: data.current.weatherCode,
+        isDay: data.current.isDay ? 'Yes' : 'No',
+        time: data.current.time
+      },
+      dailyForecast: {
+        todayMax: `${data.daily.temperature_2m_max[0]}°C`,
+        todayMin: `${data.daily.temperature_2m_min[0]}°C`
+      }
+    };
+  } catch (error) {
+    console.error("Tool Error", error);
+    return { error: "Failed to fetch weather data from API." };
+  }
+};
