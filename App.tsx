@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { MapPin, Wind, Droplets, ArrowDown, ArrowUp, Globe, Users, Settings, Heart, Crosshair, Info } from 'lucide-react';
 import { GeocodingResult, WeatherData, AIPersona, Language, AIConfig, FavoriteLocation } from './types';
@@ -21,10 +22,10 @@ const App: React.FC = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [favorites, setFavorites] = useState<FavoriteLocation[]>([]);
   
-  // AI Configuration State
+  // AI Configuration State - Default to Groq Llama 3.3
   const [aiConfig, setAiConfig] = useState<AIConfig>({
-    provider: 'gemini',
-    modelId: 'gemini-2.5-flash',
+    provider: 'groq',
+    modelId: 'llama-3.3-70b-versatile',
     apiKey: ''
   });
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);

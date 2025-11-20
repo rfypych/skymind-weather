@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { X, Save, Cpu, Key, Server, ChevronRight } from 'lucide-react';
 import { AIConfig, AIProvider, Language } from '../types';
@@ -118,12 +119,12 @@ export const ModelSettings: React.FC<Props> = ({ isOpen, onClose, config, onSave
                     type="password"
                     value={tempConfig.apiKey || ''}
                     onChange={(e) => setTempConfig({ ...tempConfig, apiKey: e.target.value })}
-                    placeholder={tempConfig.provider === 'gemini' ? t.usingEnv : t.apiKeyPlaceholder}
+                    placeholder={!tempConfig.apiKey ? t.usingEnv : t.apiKeyPlaceholder}
                     className="w-full bg-[#0f172a] border border-slate-600 text-white rounded-xl px-4 py-3 pl-10 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-600 text-sm"
                   />
                   <Key className="absolute left-3 top-3.5 w-4 h-4 text-gray-500" />
                 </div>
-                {tempConfig.provider === 'gemini' && !tempConfig.apiKey && (
+                {!tempConfig.apiKey && (
                   <p className="text-[10px] text-emerald-400 mt-2 flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                     {t.usingEnv}

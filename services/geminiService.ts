@@ -1,4 +1,5 @@
 
+
 import { GoogleGenAI, Type, FunctionDeclaration } from "@google/genai";
 import { WeatherData, AIAnalysisResult, AIPersona, Language, AIConfig, ChatMessage } from "../types";
 import { getWeatherSummary } from "./weatherService";
@@ -140,7 +141,8 @@ const analyzeWithOpenAICompatible = async (
   modelId: string,
   apiKey?: string
 ): Promise<AIAnalysisResult> => {
-  if (!apiKey) throw new Error(`API Key required for ${provider}`);
+  const finalApiKey = apiKey && apiKey.trim() !== '' ? apiKey : process.env.API_KEY;
+  if (!finalApiKey) throw new Error(`API Key required for ${provider}`);
 
   let baseUrl = '';
   switch (provider) {
@@ -153,7 +155,7 @@ const analyzeWithOpenAICompatible = async (
   const response = await fetch(baseUrl, {
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${apiKey}`,
+      'Authorization': `Bearer ${finalApiKey}`,
       'Content-Type': 'application/json',
       ...(provider === 'openrouter' ? { 'HTTP-Referer': 'https://skymind.weather', 'X-Title': 'SkyMind Weather' } : {})
     },
@@ -285,7 +287,8 @@ const chatWithOpenAICompatible = async (
   modelId: string,
   apiKey?: string
 ): Promise<string> => {
-  if (!apiKey) throw new Error(`API Key required for ${provider}`);
+  const finalApiKey = apiKey && apiKey.trim() !== '' ? apiKey : process.env.API_KEY;
+  if (!finalApiKey) throw new Error(`API Key required for ${provider}`);
 
   let baseUrl = '';
   switch (provider) {
@@ -305,7 +308,7 @@ const chatWithOpenAICompatible = async (
     return fetch(baseUrl, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${apiKey}`,
+        'Authorization': `Bearer ${finalApiKey}`,
         'Content-Type': 'application/json',
         ...(provider === 'openrouter' ? { 'HTTP-Referer': 'https://skymind.weather', 'X-Title': 'SkyMind Weather' } : {})
       },
