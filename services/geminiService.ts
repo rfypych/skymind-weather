@@ -1,3 +1,4 @@
+
 import { GoogleGenAI, Type, FunctionDeclaration } from "@google/genai";
 import { WeatherData, AIAnalysisResult, AIPersona, Language, AIConfig, ChatMessage } from "../types";
 import { getWeatherSummary } from "./weatherService";
@@ -255,8 +256,8 @@ const chatWithGemini = async (
     loopCount++;
     const call = result.functionCalls[0];
     
-    if (call.name === "get_current_weather") {
-      const city = call.args.city as string;
+    if (call.name === "get_current_weather" && call.args) {
+      const city = call.args['city'] as string;
       // console.log(`[Gemini] Tool Call: get_current_weather(${city})`);
       
       const toolResult = await getWeatherSummary(city);
